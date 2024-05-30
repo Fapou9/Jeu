@@ -3,11 +3,11 @@ package jeu;
 import java.awt.*;
 import java.util.Random;
 
-public class Player extends  ObjetJeu{
+public class Enemy extends  ObjetJeu{
 
     Random r = new Random();
 
-    public Player(int x, int y, ID id){
+    public Enemy(int x, int y, ID id){
         super( x,  y, id);
 
 

@@ -21,14 +21,19 @@ public class Jeu extends Canvas implements Runnable {
     private Handler handler;
 
     public Jeu(){
-        new Window(WIDTH, HEIGHT, "Bogoss", this);
 
         handler = new Handler();
+
+        this.addKeyListener(new KeyInput(handler));
+
+        new Window(WIDTH, HEIGHT, "Bogoss", this);
+
         r = new Random();
 
-        for(int i = 0; i < 50; i++){
-            handler.addObjet(new Player(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Player));
-        }
+
+        handler.addObjet(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
+        handler.addObjet(new Enemy(WIDTH/2, HEIGHT/2, ID.Enemy));
+
 
 
     }
@@ -99,7 +104,7 @@ public class Jeu extends Canvas implements Runnable {
                 timer += 1000;
 
                 // Affiche le nombre d'images par seconde (FPS)
-                System.out.println("FPS: " + frames);
+               // System.out.println("FPS: " + frames);
 
                 // Réinitialise le compteur de frames
                 frames = 0;

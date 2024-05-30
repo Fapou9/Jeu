@@ -2,7 +2,6 @@ package jeu;
 
 public enum ID {
 
-    Player();
-
-
+    Player(),
+    Enemy
 }
