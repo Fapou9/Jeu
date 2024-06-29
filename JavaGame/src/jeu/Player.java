@@ -21,6 +21,9 @@ public class Player extends  ObjetJeu{
         x += velX;
         y += velY;
 
+        x = Jeu.clamp(x, 0, Jeu.WIDTH - 37);
+        y = Jeu.clamp(y, 0, Jeu.HEIGHT - 60);
+
     }
 
     @Override

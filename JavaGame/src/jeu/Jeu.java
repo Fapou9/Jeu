@@ -19,6 +19,7 @@ public class Jeu extends Canvas implements Runnable {
 
     private Random r;
     private Handler handler;
+    private HUD hud;
 
     public Jeu(){
 
@@ -28,11 +29,15 @@ public class Jeu extends Canvas implements Runnable {
 
         new Window(WIDTH, HEIGHT, "Bogoss", this);
 
+        hud = new HUD();
+
         r = new Random();
 
 
         handler.addObjet(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
-        handler.addObjet(new Enemy(WIDTH/2, HEIGHT/2, ID.Enemy));
+        for(int i = 0; i < 5; i++) {
+            handler.addObjet(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Enemy));
+        }
 
 
 
@@ -55,6 +60,8 @@ public class Jeu extends Canvas implements Runnable {
 
     @Override
     public void run() {
+
+        this.requestFocus();
         // Initialise le temps actuel en nanosecondes
         long lastTime = System.nanoTime();
 
@@ -118,6 +125,7 @@ public class Jeu extends Canvas implements Runnable {
 
     private void tick() {
         handler.tick();
+        hud.tick();
 
     }
 
@@ -134,8 +142,21 @@ public class Jeu extends Canvas implements Runnable {
 
         handler.render(g);
 
+        hud.render(g);
+
         g.dispose();
         bs.show();
+    }
+
+    public static int clamp(int var, int min, int max) {
+        if (var >= max) {
+            return var = max;
+        }
+        else if (var <= min) {
+            return var = min;
+        }
+        else
+            return var;
     }
 
     public static void main(String[] args) {
