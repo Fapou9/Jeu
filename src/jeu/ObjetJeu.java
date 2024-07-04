@@ -19,6 +19,8 @@ public abstract class ObjetJeu {
 
     public abstract void render(Graphics g);
 
+    public abstract Rectangle getBounds();
+
     public int getX() {
         return x;
     }

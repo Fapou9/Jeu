@@ -34,9 +34,9 @@ public class Jeu extends Canvas implements Runnable {
         r = new Random();
 
 
-        handler.addObjet(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
+        handler.addObjet(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
         for(int i = 0; i < 5; i++) {
-            handler.addObjet(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Enemy));
+            handler.addObjet(new Enemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Enemy, handler));
         }
 
 
